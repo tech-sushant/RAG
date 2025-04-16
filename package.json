@@ -1,0 +1,24 @@
+{
+  "name": "rag",
+  "version": "1.0.0",
+  "main": "chunker.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cohere-ai": "^7.17.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "langchain": "^0.3.21",
+    "multer": "^1.4.5-lts.2",
+    "nodeman": "^1.1.2",
+    "openai": "^4.94.0",
+    "pdf-parse": "^1.1.1",
+    "pg": "^8.14.1"
+  }
+}

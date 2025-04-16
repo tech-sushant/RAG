@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-6 text-center">RAG System</h1>
+        
+        <!-- Question Input Form -->
+        <div class="mb-6">
+            <label for="query" class="block text-lg font-semibold">Enter your question:</label>
+            <input type="text" id="query" class="w-full p-3 mt-2 border border-gray-300 rounded-md" placeholder="Ask a question..." autocomplete="on" />
+            <button id="submit-query" class="mt-4 w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600">Submit</button>
+        </div>
+
+        <!-- Question Block -->
+        <div id="question-block" class="hidden mb-6">
+            <h2 class="text-xl font-semibold">Question:</h2>
+            <p id="question" class="text-lg text-gray-800"></p>
+        </div>
+
+        <!-- Answer Block -->
+        <div id="answer-block" class="hidden mb-6">
+            <h2 class="text-xl font-semibold">Answer:</h2>
+            <p id="answer" class="text-lg text-gray-800"></p>
+        </div>
+
+        <!-- Chunks Block with Similarity Scores -->
+        <div id="chunks-block" class="hidden mb-6">
+            <h2 class="text-xl font-semibold mb-3">Relevant Data:</h2>
+            <div id="chunks-container" class="space-y-4">
+                <!-- The chunks will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('submit-query').addEventListener('click', async function () {
+            const query = document.getElementById('query').value;
+            if (!query) return;
+
+            // Clear any previous data
+            document.getElementById('question-block').classList.remove('hidden');
+            document.getElementById('answer-block').classList.add('hidden');
+            document.getElementById('chunks-block').classList.add('hidden');
+
+            document.getElementById('question').textContent = query;
+
+            // Make a request to the backend to search for similar chunks
+            const response = await fetch('/search', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const { results } = data;
+
+                // Display the relevant chunks with similarity scores
+                const chunksContainer = document.getElementById('chunks-container');
+                chunksContainer.innerHTML = '';
+                results.forEach(result => {
+                    const chunkBlock = document.createElement('div');
+                    chunkBlock.classList.add('p-4', 'bg-white', 'border', 'border-gray-300', 'rounded-md');
+
+                    const similarityScore = result.similarity.toFixed(2);
+                    chunkBlock.innerHTML = `
+                        <p class="font-semibold">Similarity Score: ${similarityScore}</p>
+                        <p class="text-gray-800">${result.content}</p>
+                    `;
+                    chunksContainer.appendChild(chunkBlock);
+                });
+
+                document.getElementById('chunks-block').classList.remove('hidden');
+
+                // Answer route to get the answer based on the chunks
+                const answerResponse = await fetch('/answer', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        query,
+                        chunks: results.map(result => result.content)
+                    })
+                });
+
+                if (answerResponse.ok) {
+                    const answerData = await answerResponse.json();
+                    document.getElementById('answer').textContent = answerData.answer;
+                    document.getElementById('answer-block').classList.remove('hidden');
+                } else {
+                    console.error('Failed to get answer');
+                }
+            } else {
+                console.error('Failed to fetch similar chunks');
+            }
+        });
+    </script>
+</body>
+</html>
