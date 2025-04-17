@@ -14,6 +14,8 @@ export default async function searchRoute(req, res) {
 
     const documents = results.map((item) => item.content);
     
+    console.log("Initial Chunks",documents);
+    
     const rerankResponse = await cohere.v2.rerank({
       documents:documents,
       query:query,
@@ -26,6 +28,8 @@ export default async function searchRoute(req, res) {
       similarity: result.relevanceScore,
     }));
 
+    console.log("Reranked Results",rerankedResults);
+    
     res.json({ results: rerankedResults });
     
   } catch (err) {

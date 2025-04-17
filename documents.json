@@ -1,0 +1,22 @@
+[
+  {
+    "content": "## Dear Shareholders:\n\nLast year at this time, I shared my enthusiasm and optimism for Amazon's future. Today, I have even more. The reasons are many, but start with the progress we've made in our financial results and customer experiences, and extend to our continued innovation and the remarkable opportunities in front of us.\n\nIn 2023, Amazon's total revenue grew 12% year-over-year ('YoY') from $514B to $575B. By segment, North America revenue increased 12% YoY from $316B to $353B, International revenue grew 11% YoY from $118B to $131B, and AWS revenue increased 13% YoY from $80B to $91B.\n\nFurther, Amazon's operating income and Free Cash Flow ('FCF') dramatically improved. Operating income in 2023 improved 201% YoY from $12.2B (an operating margin of 2.4%) to $36.9B (an operating margin of 6.4%). Trailing Twelve Month FCF adjusted for equipment finance leases improved from -$12.8B in 2022 to $35.5B (up $48.3B).",
+    "similarity": 0.9467988
+  },
+  {
+    "content": "The increase in AWS operating income in absolute dollars in 2023, compared to the prior year, is primarily due to increased sales, partially offset by increased payroll and related expenses and spending on technology infrastructure, both of which were primarily driven by additional investments to support AWS business growth. Changes in foreign exchange rates positively impacted operating income by $220 million in 2023.",
+    "similarity": 0.87218446
+  },
+  {
+    "content": "|                                                                                   | Year Ended December 31,   | Year Ended December 31,   |\n|-----------------------------------------------------------------------------------|---------------------------|---------------------------|\n|                                                                                   | 2022                      | 2023                      |\n| Net Sales:                                                                        |                           |                           |\n| North America                                                                     | $ 315,880                 | $ 352,828                 |\n| International                                                                     | 118,007                   | 131,200                   |\n| AWS                                                                               | 80,096                    | 90,757                    |",
+    "similarity": 0.85216236
+  },
+  {
+    "content": "|               | Year Ended December 31,   | Year Ended December 31,   | Year Ended December 31,   |\n|---------------|---------------------------|---------------------------|---------------------------|\n|               | 2021                      | 2022                      | 2023                      |\n| North America | $ 9,234                   | $ 11,565                  | $ 13,678                  |\n| International | 3,022                     | 3,483                     | 4,016                     |\n| AWS           | 10,653                    | 9,876                     | 12,531                    |\n| Consolidated  | $ 22,909                  | $ 24,924                  | $ 30,225                  |",
+    "similarity": 0.8399576
+  },
+  {
+    "content": "International sales increased 11% in 2023, compared to the prior year. The sales growth primarily reflects increased unit sales, primarily by third-party sellers, advertising sales, and subscription services. Increased unit sales were driven largely by our continued focus on price, selection, and convenience for our customers, including from our shipping offers. Changes in foreign exchange rates increased International net sales by $88 million in 2023.\n\nAWS sales increased 13% in 2023, compared to the prior year. The sales growth primarily reflects increased customer usage, partially offset by pricing changes, primarily driven by long-term customer contracts.",
+    "similarity": 0.80698997
+  }
+]
